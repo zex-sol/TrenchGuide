@@ -240,21 +240,21 @@
             color: var(--light);
         }
         
-        /* Market Analysis Section */
-        .market-analysis {
+        /* Testimonials */
+        .testimonials {
             background-color: #0a0a0a;
             padding: 80px 0;
             position: relative;
         }
         
-        .analysis-grid {
+        .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
         
-        .analysis-card {
+        .testimonial-card {
             background-color: var(--card-bg);
             padding: 30px;
             border-radius: 10px;
@@ -264,155 +264,41 @@
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .analysis-card.animate {
+        .testimonial-card.animate {
             animation: fadeInUp 0.6s forwards;
         }
         
-        .analysis-card:hover {
+        .testimonial-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
         
-        .analysis-header {
-            display: flex;
-            align-items: center;
+        .testimonial-content {
+            font-style: italic;
             margin-bottom: 20px;
         }
         
-        .coin-icon {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-right: 15px;
-        }
-        
-        .coin-icon span {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-        }
-        
-        .coin-name {
-            flex-grow: 1;
-        }
-        
-        .coin-name h4 {
-            margin-bottom: 5px;
-            color: var(--light);
-            font-size: 1.2rem;
-        }
-        
-        .coin-trend {
-            font-size: 0.9rem;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        
-        .trend-up {
-            background-color: rgba(0, 255, 0, 0.2);
-            color: #5cff5c;
-        }
-        
-        .trend-down {
-            background-color: rgba(255, 0, 0, 0.2);
-            color: #ff5c5c;
-        }
-        
-        .trend-neutral {
-            background-color: rgba(255, 255, 0, 0.2);
-            color: #ffff5c;
-        }
-        
-        .analysis-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--light);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.8rem;
-            color: #999;
-            text-transform: uppercase;
-        }
-        
-        .analysis-content {
-            margin-bottom: 20px;
-        }
-        
-        .analysis-content h5 {
-            color: var(--light);
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .sentiment-bar {
-            height: 10px;
-            background-color: #333;
-            border-radius: 5px;
-            margin-top: 15px;
-            position: relative;
             overflow: hidden;
         }
         
-        .sentiment-fill {
-            height: 100%;
-            border-radius: 5px;
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--light);
         }
         
-        .sentiment-bullish .sentiment-fill {
-            background: linear-gradient(90deg, #00a800, #00ff00);
-            width: 75%;
-        }
-        
-        .sentiment-bearish .sentiment-fill {
-            background: linear-gradient(90deg, #a80000, #ff0000);
-            width: 65%;
-        }
-        
-        .sentiment-neutral .sentiment-fill {
-            background: linear-gradient(90deg, #a8a800, #ffff00);
-            width: 50%;
-        }
-        
-        .analysis-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .updated-time {
-            font-size: 0.8rem;
+        .author-info p {
             color: #999;
-        }
-        
-        .view-details {
-            color: var(--primary);
-            text-decoration: none;
             font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .view-details:hover {
-            color: #4617c9;
         }
         
         /* Pricing Section */
@@ -658,7 +544,7 @@
             <nav>
                 <ul>
                     <li><a href="#features">Trading Basics</a></li>
-                    <li><a href="#market-analysis">Market Analysis</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
                     <li><a href="#pricing">Courses</a></li>
                     <li><a href="#cta" class="cta-button">Start Trading</a></li>
                 </ul>
@@ -741,89 +627,170 @@
         </div>
     </section>
 
-    <!-- Market Analysis Section -->
-    <section class="market-analysis" id="market-analysis">
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title animate-on-scroll">
-                <h2>Current Meme Coin Market Analysis</h2>
-                <p>Stay updated with our expert analysis of trending meme coins and market sentiment.</p>
+                <h2>Success Stories From The Trenches</h2>
+                <p>Hear from traders who've applied our strategies and transformed their approach to meme coin trading.</p>
             </div>
-            <div class="analysis-grid">
-                <div class="analysis-card animate-on-scroll">
-                    <div class="analysis-header">
-                        <div class="coin-icon">
-                            <span>D</span>
-                        </div>
-                        <div class="coin-name">
-                            <h4>DOGE</h4>
-                            <p>Dogecoin</p>
-                        </div>
-                        <span class="coin-trend trend-up">+12.4%</span>
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        "Before discovering Trench Guide, I was always buying at the top and selling at the bottom. Their research techniques helped me spot PEPE before it went mainstream, leading to my first 10x in crypto."
                     </div>
-                    <div class="analysis-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">$0.178</div>
-                            <div class="stat-label">Price</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$23.8B</div>
-                            <div class="stat-label">Market Cap</div>
+                        <div class="author-info">
+                            <h4>Alex T.</h4>
+                            <p>Trader since 2022</p>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$1.2B</div>
-                            <div class="stat-label">24h Volume</div>
-                        </div>
-                    </div>
-                    <div class="analysis-content">
-                        <h5>Technical Outlook</h5>
-                        <p>Breaking above key resistance levels with increased volume. Support forming at $0.165 with next resistance at $0.19.</p>
-                        <h5>Community Sentiment</h5>
-                        <div class="sentiment-bar sentiment-bullish">
-                            <div class="sentiment-fill"></div>
-                        </div>
-                    </div>
-                    <div class="analysis-footer">
-                        <span class="updated-time">Updated 2h ago</span>
-                        <a href="#" class="view-details">Full Analysis →</a>
                     </div>
                 </div>
-                <div class="analysis-card animate-on-scroll">
-                    <div class="analysis-header">
-                        <div class="coin-icon">
-                            <span>P</span>
-                        </div>
-                        <div class="coin-name">
-                            <h4>PEPE</h4>
-                            <p>Pepe Coin</p>
-                        </div>
-                        <span class="coin-trend trend-down">-8.2%</span>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        "The risk management strategies I learned saved me countless times. Instead of going all-in on every coin, I now allocate properly and have consistent gains rather than devastating losses."
                     </div>
-                    <div class="analysis-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">$0.00000985</div>
-                            <div class="stat-label">Price</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$4.1B</div>
-                            <div class="stat-label">Market Cap</div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>Full-time trader</p>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$580M</div>
-                            <div class="stat-label">24h Volume</div>
-                        </div>
-                    </div>
-                    <div class="analysis-content">
-                        <h5>Technical Outlook</h5>
-                        <p>Retesting support levels after recent rally. Volume declining on downward move suggests potential reversal soon.</p>
-                        <h5>Community Sentiment</h5>
-                        <div class="sentiment-bar sentiment-bearish">
-                            <div class="sentiment-fill"></div>
-                        </div>
-                    </div>
-                    <div class="analysis-footer">
-                        <span class="updated-time">Updated 4h ago</span>
-                        <a href="#" class="view-details">Full Analysis →</a>
                     </div>
                 </div>
-                <div class="analysis-card animate-on-scroll">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        "The scam avoidance section alone was worth the investment. I was about to put a significant amount into what turned out to be a honeypot scheme. Trench Guide's warning signs saved me thousands."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mike R.</h4>
+                            <p>Crypto enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Trading Courses & Resources</h2>
+                <p>Choose the plan that fits your trading journey and get access to our battle-tested strategies.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Recruit</h3>
+                    <div class="price">Free<span>/forever</span></div>
+                    <ul class="feature-list">
+                        <li>Basic meme coin glossary</li>
+                        <li>Introduction to wallets</li>
+                        <li>How to use DEXs guide</li>
+                        <li>Weekly newsletter</li>
+                        <li>Community forum access</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card featured animate-on-scroll">
+                    <h3>Soldier</h3>
+                    <div class="coming-soon">Coming Soon</div>
+                    <ul class="feature-list">
+                        <li>Everything in Recruit</li>
+                        <li>Full trading course access</li>
+                        <li>Entry & exit strategy guides</li>
+                        <li>Weekly trend analysis</li>
+                        <li>Discord community access</li>
+                        <li>Monthly webinars</li>
+                    </ul>
+                    <a href="#" class="cta-button">Join Waitlist</a>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Commander</h3>
+                    <div class="coming-soon">Coming Soon</div>
+                    <ul class="feature-list">
+                        <li>Everything in Soldier</li>
+                        <li>1-on-1 strategy sessions</li>
+                        <li>Early trend alerts</li>
+                        <li>Portfolio review</li>
+                        <li>Advanced technical analysis</li>
+                        <li>Private trader group</li>
+                    </ul>
+                    <a href="#" class="cta-button">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section animate-on-scroll" id="cta">
+        <div class="container">
+            <h2>Ready to Conquer the Meme Coin Market?</h2>
+            <p>Join thousands of traders who have transformed their approach to meme coin trading with our comprehensive guides and community support.</p>
+            <a href="#" class="cta-button-large">Start Trading Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Trench<span>Guide</span></div>
+                <p class="footer-text">Your trusted companion in the volatile world of meme coin trading.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trench Guide. All rights reserved. Trading meme coins involves substantial risk. Past performance is not indicative of future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.85;
                 
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Animate feature cards with delay
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+            
+            // Animate testimonial cards with delay
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            testimonialCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+            
+            // Animate pricing cards with delay
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+        });
+    </script>
+</body>
+</html>
