@@ -1,417 +1,771 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trench Guide - Meme Coin Trading Basics</title>
-  <style>
-    :root {
-      --primary: #5928E5;
-      --dark: #232323;
-      --light: #f7f7f7;
-      --accent: #FF6B00;
-      --text: #333333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trench Guide - Meme Coin Trading Basics</title>
+    <style>
+        :root {
+            --primary: #5928E5;
+            --dark: #121212;
+            --light: #f7f7f7;
+            --accent: #FF6B00;
+            --text: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #4617c9;
+            transform: scale(1.05);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--dark);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            background-image: linear-gradient(135deg, rgba(89, 40, 229, 0.8), rgba(0, 0, 0, 0.9)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(89, 40, 229, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: gradientPulse 8s infinite alternate;
+        }
+        
+        @keyframes gradientPulse {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.7;
+                transform: scale(1.1);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+        
+        .hero .cta-button {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.6s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-title.animate {
+            animation: fadeInUp 1s forwards;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .section-title p {
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: var(--card-bg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .feature-card.animate {
+            animation: fadeInUp 0.6s forwards;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--primary);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+<!-- From Meme to Moon Section -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <div class="section-title animate-on-scroll">
+            <h2>From Meme to Moon: How It Happened</h2>
+            <p>Explore how the biggest meme coins exploded — and the signs that came first. Use these patterns to sharpen your instincts and catch the next big wave.</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-content">
+                    <h3>🥜 $PNUT</h3>
+                    <p><strong>Pump Period:</strong> February 2022</p>
+                    <p><strong>Why It Blew Up:</strong> Viral airdrop + meme contests + influencer hype</p>
+                    <p><strong>Lesson:</strong> Incentivized community + consistent humor = viral velocity</p>
+                </div>
+            </div>
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-content">
+                    <h3>💨 $FARTCOIN</h3>
+                    <p><strong>Pump Period:</strong> July 2021</p>
+                    <p><strong>Why It Blew Up:</strong> Absurd branding + Twitter memes + low entry price</p>
+                    <p><strong>Lesson:</strong> Shock value + relatability = instant shareability</p>
+                </div>
+            </div>
+            <div class="testimonial-card animate-on-scroll">
+                <div class="testimonial-content">
+                    <h3>🪵 $WOULD</h3>
+                    <p><strong>Pump Period:</strong> March 2024</p>
+                    <p><strong>Why It Blew Up:</strong> Satirical poll meme (“Would you…”) + TikTok trends</p>
+                    <p><strong>Lesson:</strong> Format-based virality + ironic tone = long shelf life</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      background-color: var(--light);
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-    }
-
-    nav ul li {
-      margin-left: 30px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    nav ul li a:hover {
-      color: var(--primary);
-    }
-
-    .cta-button {
-      background-color: var(--primary);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-
-    .cta-button:hover {
-      background-color: #4617c9;
-    }
-
-    .hero {
-      background-color: var(--dark);
-      color: white;
-      padding: 100px 0;
-      text-align: center;
-      background-image: linear-gradient(135deg, rgba(89, 40, 229, 0.8), rgba(35, 35, 35, 0.8));
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 40px;
-    }
-
-    .features {
-      padding: 80px 0;
-      background-color: white;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: var(--dark);
-    }
-
-    .section-title p {
-      color: var(--text);
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-    }
-
-    .feature-card {
-      text-align: center;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .pricing {
-      padding: 80px 0;
-      background-color: white;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .pricing-card {
-      border: 1px solid #eee;
-      border-radius: 10px;
-      padding: 40px 30px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .pricing-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .pricing-card.featured {
-      border: 2px solid var(--primary);
-    }
-
-    .price {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-
-    .price span {
-      font-size: 1rem;
-      color: #666;
-    }
-
-    .cta-section {
-      background-color: var(--primary);
-      color: white;
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .cta-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
-    .cta-section p {
-      max-width: 600px;
-      margin: 0 auto 40px;
-      font-size: 1.1rem;
-    }
-
-    .cta-button-large {
-      background-color: white;
-      color: var(--primary);
-      padding: 15px 30px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: transform 0.3s;
-    }
-
-    .cta-button-large:hover {
-      transform: translateY(-5px);
-    }
-
-    footer {
-      background-color: var(--dark);
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-    }
-
-    .footer-logo {
-      font-size: 24px;
-      font-weight: 700;
-      color: white;
-    }
-
-    .footer-logo span {
-      color: var(--accent);
-    }
-
-    .footer-text, .footer-bottom {
-      color: #bbb;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .testimonial-card {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .testimonial-content h3 {
-      margin-bottom: 10px;
-    }
-  </style>
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: var(--dark);
+            position: relative;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            border: 1px solid var(--border);
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .pricing-card.animate {
+            animation: fadeInUp 0.6s forwards;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+        
+        .pricing-card h3 {
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #999;
+        }
+        
+        .coming-soon {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(89, 40, 229, 0.4) 0%, rgba(255, 107, 0, 0.2) 100%);
+            animation: ctaBgPulse 8s infinite alternate;
+        }
+        
+        @keyframes ctaBgPulse {
+            0% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .cta-section.animate h2 {
+            animation: fadeInUp 0.6s forwards;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .cta-section.animate p {
+            animation: fadeInUp 0.6s 0.2s forwards;
+        }
+        
+        .cta-button-large {
+            background-color: white;
+            color: var(--primary);
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .cta-section.animate .cta-button-large {
+            animation: fadeInUp 0.6s 0.4s forwards;
+        }
+        
+        .cta-button-large:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer-logo span {
+            color: var(--accent);
+        }
+        
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #bbb;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <div class="container header-container">
-      <a href="#" class="logo">Trench<span>Guide</span></a>
-      <nav>
-        <ul>
-          <li><a href="#features">Trading Basics</a></li>
-          <li><a href="#testimonials">From the Trenches</a></li>
-          <li><a href="#pricing">Courses</a></li>
-          <li><a href="#cta" class="cta-button">Start Trading</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="container">
-      <h1>Master Meme Coin Trading From The Trenches</h1>
-      <p>Learn how to identify, analyze, and profit from the next big meme coin before everyone else. Our battle-tested strategies help you navigate the volatile world of meme coin trading.</p>
-      <a href="#" class="cta-button">Start Your Journey</a>
-    </div>
-  </section>
-
-  <section class="features" id="features">
-    <div class="container">
-      <div class="section-title">
-        <h2>Meme Coin Trading Fundamentals</h2>
-        <p>Our comprehensive guide covers everything you need to know to start trading meme coins effectively.</p>
-      </div>
-      <div class="features-grid">
-        <div class="feature-card"><h3>Research Techniques</h3><p>Learn how to identify promising meme coins early by analyzing social media trends, community growth, and developer activity.</p></div>
-        <div class="feature-card"><h3>Technical Analysis</h3><p>Master the basics of chart patterns, volume analysis, and indicators specific to the volatile nature of meme coins.</p></div>
-        <div class="feature-card"><h3>Risk Management</h3><p>Develop effective strategies to protect your capital in the high-risk environment of meme coin trading.</p></div>
-        <div class="feature-card"><h3>Exchange Navigation</h3><p>Get familiar with DEXs, CEXs, and how to execute trades efficiently when a meme coin is trending.</p></div>
-        <div class="feature-card"><h3>Entry & Exit Timing</h3><p>Develop skills to time your entries and exits to maximize profits in the highly volatile meme coin market.</p></div>
-        <div class="feature-card"><h3>Scam Avoidance</h3><p>Learn to identify red flags and avoid common meme coin scams like rug pulls, honeypots, and pump-and-dumps.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- From Meme to Moon Section -->
-  <section class="testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-title">
-        <h2>From Meme to Moon: How It Happened</h2>
-        <p>Explore how the biggest meme coins exploded — and the signs that came first. Use these patterns to sharpen your instincts and catch the next big wave.</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <h3 style="color: var(--accent);">$DOGE</h3>
-            <p><strong>Pump Period:</strong> Jan–May 2021</p>
-            <p><strong>Why It Blew Up:</strong> Elon Musk tweets + Robinhood access + viral TikToks</p>
-            <p><strong>Lesson:</strong> Mainstream hype and celebrity backing = powerful momentum</p>
-          </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Trench<span>Guide</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#features">Trading Basics</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#pricing">Courses</a></li>
+                    <li><a href="#cta" class="cta-button">Start Trading</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <h3 style="color: var(--accent);">$PEPE</h3>
-            <p><strong>Pump Period:</strong> April 2023</p>
-            <p><strong>Why It Blew Up:</strong> Reddit buzz + Pepe memes everywhere + early DEX launches</p>
-            <p><strong>Lesson:</strong> Meme relevance + strong community = explosive early growth</p>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <h3 style="color: var(--accent);">$WIF</h3>
-            <p><strong>Pump Period:</strong> Late 2023 – Early 2024</p>
-            <p><strong>Why It Blew Up:</strong> Solana wave + simple branding (dog with hat)</p>
-            <p><strong>Lesson:</strong> A clean, funny narrative + active holders = viral traction</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <section class="pricing" id="pricing">
-    <div class="container">
-      <div class="section-title">
-        <h2>Trading Courses & Resources</h2>
-        <p>Choose the plan that fits your trading journey and get access to our battle-tested strategies.</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="pricing-card">
-          <h3>Recruit</h3>
-          <div class="price">Free<span>/forever</span></div>
-          <ul class="feature-list">
-            <li>Basic meme coin glossary</li>
-            <li>Introduction to wallets</li>
-            <li>How to use DEXs guide</li>
-            <li>Weekly newsletter</li>
-            <li>Community forum access</li>
-          </ul>
-          <a href="#" class="cta-button">Get Started</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master Meme Coin Trading From The Trenches</h1>
+            <p>Learn how to identify, analyze, and profit from the next big meme coin before everyone else. Our battle-tested strategies help you navigate the volatile world of meme coin trading.</p>
+            <a href="#" class="cta-button">Start Your Journey</a>
         </div>
-        <div class="pricing-card featured">
-          <h3>Soldier</h3>
-          <div class="coming-soon">Coming Soon</div>
-          <ul class="feature-list">
-            <li>Everything in Recruit</li>
-            <li>Full trading course access</li>
-            <li>Entry & exit strategy guides</li>
-            <li>Weekly trend analysis</li>
-            <li>Discord community access</li>
-            <li>Monthly webinars</li>
-          </ul>
-          <a href="#" class="cta-button">Join Waitlist</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Meme Coin Trading Fundamentals</h2>
+                <p>Our comprehensive guide covers everything you need to know to start trading meme coins effectively.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+                        </svg>
+                    </div>
+                    <h3>Research Techniques</h3>
+                    <p>Learn how to identify promising meme coins early by analyzing social media trends, community growth, and developer activity.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22,21H2V3H4V19H6V10H10V19H12V6H16V19H18V14H22V21Z"/>
+                        </svg>
+                    </div>
+                    <h3>Technical Analysis</h3>
+                    <p>Master the basics of chart patterns, volume analysis, and indicators specific to the volatile nature of meme coins.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,1L21,5V11C21,16.55 17.16,21.74 12,23C6.84,21.74 3,16.55 3,11V5L12,1M12,3.18L5,6.3V11.22C5,15.54 8.25,19.69 12,20.82C15.75,19.69 19,15.54 19,11.22V6.3L12,3.18Z"/>
+                        </svg>
+                    </div>
+                    <h3>Risk Management</h3>
+                    <p>Develop effective strategies to protect your capital in the high-risk environment of meme coin trading.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                        </svg>
+                    </div>
+                    <h3>Exchange Navigation</h3>
+                    <p>Get familiar with DEXs, CEXs, and how to execute trades efficiently when a meme coin is trending.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/>
+                        </svg>
+                    </div>
+                    <h3>Entry & Exit Timing</h3>
+                    <p>Develop skills to time your entries and exits to maximize profits in the highly volatile meme coin market.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M17.13,17C15.92,18.85 14.11,20.24 12,20.92C9.89,20.24 8.08,18.85 6.87,17C6.53,16.5 6.24,16 6,15.47C6,13.82 8.71,12.47 12,12.47C15.29,12.47 18,13.79 18,15.47C17.76,16 17.47,16.5 17.13,17Z"/>
+                        </svg>
+                    </div>
+                    <h3>Scam Avoidance</h3>
+                    <p>Learn to identify red flags and avoid common meme coin scams like rug pulls, honeypots, and pump-and-dumps.</p>
+                </div>
+            </div>
         </div>
-        <div class="pricing-card">
-          <h3>Commander</h3>
-          <div class="coming-soon">Coming Soon</div>
-          <ul class="feature-list">
-            <li>Everything in Soldier</li>
-            <li>1-on-1 strategy sessions</li>
-            <li>Early trend alerts</li>
-            <li>Portfolio review</li>
-            <li>Advanced technical analysis</li>
-            <li>Private trader group</li>
-          </ul>
-          <a href="#" class="cta-button">Join Waitlist</a>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Success Stories From The Trenches</h2>
+                <p>Hear from traders who've applied our strategies and transformed their approach to meme coin trading.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        "Before discovering Trench Guide, I was always buying at the top and selling at the bottom. Their research techniques helped me spot PEPE before it went mainstream, leading to my first 10x in crypto."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Alex T.</h4>
+                            <p>Trader since 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        "The risk management strategies I learned saved me countless times. Instead of going all-in on every coin, I now allocate properly and have consistent gains rather than devastating losses."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah K.</h4>
+                            <p>Full-time trader</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card animate-on-scroll">
+                    <div class="testimonial-content">
+                        "The scam avoidance section alone was worth the investment. I was about to put a significant amount into what turned out to be a honeypot scheme. Trench Guide's warning signs saved me thousands."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mike R.</h4>
+                            <p>Crypto enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-section" id="cta">
-    <div class="container">
-      <h2>Ready to Conquer the Meme Coin Market?</h2>
-      <p>Join thousands of traders who have transformed their approach to meme coin trading with our comprehensive guides and community support.</p>
-      <a href="#" class="cta-button-large">Start Trading Now</a>
-    </div>
-  </section>
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title animate-on-scroll">
+                <h2>Trading Courses & Resources</h2>
+                <p>Choose the plan that fits your trading journey and get access to our battle-tested strategies.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Recruit</h3>
+                    <div class="price">Free<span>/forever</span></div>
+                    <ul class="feature-list">
+                        <li>Basic meme coin glossary</li>
+                        <li>Introduction to wallets</li>
+                        <li>How to use DEXs guide</li>
+                        <li>Weekly newsletter</li>
+                        <li>Community forum access</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+                <div class="pricing-card featured animate-on-scroll">
+                    <h3>Soldier</h3>
+                    <div class="coming-soon">Coming Soon</div>
+                    <ul class="feature-list">
+                        <li>Everything in Recruit</li>
+                        <li>Full trading course access</li>
+                        <li>Entry & exit strategy guides</li>
+                        <li>Weekly trend analysis</li>
+                        <li>Discord community access</li>
+                        <li>Monthly webinars</li>
+                    </ul>
+                    <a href="#" class="cta-button">Join Waitlist</a>
+                </div>
+                <div class="pricing-card animate-on-scroll">
+                    <h3>Commander</h3>
+                    <div class="coming-soon">Coming Soon</div>
+                    <ul class="feature-list">
+                        <li>Everything in Soldier</li>
+                        <li>1-on-1 strategy sessions</li>
+                        <li>Early trend alerts</li>
+                        <li>Portfolio review</li>
+                        <li>Advanced technical analysis</li>
+                        <li>Private trader group</li>
+                    </ul>
+                    <a href="#" class="cta-button">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <div class="container">
-      <div class="footer-logo">Trench<span>Guide</span></div>
-      <p class="footer-text">Your trusted companion in the volatile world of meme coin trading.</p>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Trench Guide. All rights reserved. Trading meme coins involves substantial risk. Past performance is not indicative of future results.</p>
-      </div>
-    </div>
-  </footer>
+    <!-- CTA Section -->
+    <section class="cta-section animate-on-scroll" id="cta">
+        <div class="container">
+            <h2>Ready to Conquer the Meme Coin Market?</h2>
+            <p>Join thousands of traders who have transformed their approach to meme coin trading with our comprehensive guides and community support.</p>
+            <a href="#" class="cta-button-large">Start Trading Now</a>
+        </div>
+    </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Trench<span>Guide</span></div>
+                <p class="footer-text">Your trusted companion in the volatile world of meme coin trading.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trench Guide. All rights reserved. Trading meme coins involves substantial risk. Past performance is not indicative of future results.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animation handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkScroll() {
+                const triggerBottom = window.innerHeight * 0.85;
+                
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerBottom) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Animate feature cards with delay
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+            
+            // Animate testimonial cards with delay
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            testimonialCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+            
+            // Animate pricing cards with delay
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            pricingCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 * index}s`;
+            });
+        });
+    </script>
 </body>
 </html>
