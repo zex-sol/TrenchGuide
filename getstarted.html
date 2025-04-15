@@ -1,8 +1,4 @@
-<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="16"></line>
-            <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,13 +21,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Courier New', monospace;  /* Military-style font */
         }
         
         body {
             color: var(--text);
             line-height: 1.6;
             background-color: var(--dark);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h25v25H0zM25 25h25v25H25zM50 50h25v25H50zM75 75h25v25H75z' fill='%234A5D23' fill-opacity='0.2'/%3E%3Cpath d='M25 0h25v25H25zM50 25h25v25H50zM75 50h25v25H75zM0 75h25v25H0z' fill='%23A68A64' fill-opacity='0.15'/%3E%3Cpath d='M50 0h25v25H50zM75 25h25v25H75zM0 50h25v25H0zM25 75h25v25H25z' fill='%23586B33' fill-opacity='0.1'/%3E%3C/svg%3E");
         }
         
         .container {
@@ -48,6 +45,7 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            border-bottom: 2px solid var(--border);
         }
         
         .header-container {
@@ -59,8 +57,10 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--light);
             text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .logo span {
@@ -81,27 +81,64 @@
             color: var(--light);
             font-weight: 500;
             transition: color 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
         
         nav ul li a:hover {
-            color: var(--primary);
+            color: var(--secondary);
         }
         
         .cta-button {
             background-color: var(--primary);
             color: var(--light);
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--highlight);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid var(--light);
+            pointer-events: none;
         }
         
         .cta-button:hover {
-            background-color: #3a4a1c;
+            background-color: var(--border);
             transform: scale(1.05);
         }
         
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: rgba(255,255,255,0.1);
+            position: fixed;
+            top: 80px;
+            left: 0;
+            z-index: 99;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.2s;
+        }
+
         /* Hero Section */
         .hero {
             background-color: var(--dark);
@@ -113,6 +150,7 @@
             background-position: center;
             position: relative;
             overflow: hidden;
+            border-bottom: 5px solid var(--border);
         }
         
         .hero::before {
@@ -122,19 +160,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(74, 93, 35, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
-            animation: gradientPulse 8s infinite alternate;
-        } 
-        
-        @keyframes gradientPulse {
-            0% {
-                opacity: 0.3;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0.7;
-                transform: scale(1.1);
-            }
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23A68A64' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23586B33' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
         }
         
         .hero h1 {
@@ -144,6 +171,15 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s forwards;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: var(--light);
+            text-shadow: 3px 3px 0 var(--accent), 
+                         -1px -1px 0 var(--dark);
         }
         
         .hero p {
@@ -161,6 +197,10 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s 0.6s forwards;
+            background-color: var(--accent);
+            border: 2px solid var(--light);
+            padding: 12px 25px;
+            font-size: 1.1rem;
         }
         
         @keyframes fadeInUp {
@@ -175,6 +215,17 @@
             padding: 80px 0;
             position: relative;
             background-color: var(--dark);
+            background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v6H0V0zm28 8h12v6H28V8zm14-8h12v6H42V0zm14 0h12v6H56V0zm0 8h12v6H56V8zM42 8h12v6H42V8zm0 16h12v6H42v-6zm14-8h12v6H56v-6zm14 0h12v6H70v-6zm0-16h12v6H70V0zM28 32h12v6H28v-6zM14 16h12v6H14v-6zM0 24h12v6H0v-6zm0 8h12v6H0v-6zm14 0h12v6H14v-6zm14 8h12v6H28v-6zm-14 0h12v6H14v-6zm28 0h12v6H42v-6zm14-8h12v6H56v-6zm0-8h12v6H56v-6zm14 8h12v6H70v-6zm0 8h12v6H70v-6zM14 24h12v6H14v-6zm14-8h12v6H28v-6zM14 8h12v6H14V8zM0 8h12v6H0V8z' fill='%23586B33' fill-opacity='0.15' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .learning-path::before {
+            content: '• • • • •';
+            display: block;
+            text-align: center;
+            color: var(--accent);
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
         }
         
         .section-title {
@@ -197,6 +248,27 @@
             font-size: 2.5rem;
             margin-bottom: 15px;
             color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: var(--light);
+            text-shadow: 3px 3px 0 var(--accent), 
+                         -1px -1px 0 var(--dark);
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
         }
         
         .section-title p {
@@ -222,6 +294,7 @@
             width: 4px;
             background: var(--primary);
             opacity: 0.4;
+            border-right: 1px dashed var(--accent);
         }
         
         .step {
@@ -244,7 +317,7 @@
             width: 50px;
             height: 50px;
             background: var(--primary);
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -255,16 +328,42 @@
             z-index: 2;
             flex-shrink: 0;
             color: var(--light);
+            border: 2px solid var(--border);
         }
         
         .step-content {
             background: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 0;
             padding: 25px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             flex-grow: 1;
             transform: perspective(1000px) rotateY(0deg);
             transition: transform 0.5s;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .step-content::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+        }
+        
+        .step-content::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
+            z-index: 1;
         }
         
         .step-content:hover {
@@ -275,12 +374,28 @@
             color: var(--light);
             margin-bottom: 15px;
             font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            display: inline-block;
         }
         
         /* Interactive Cards */
         .interactive-section {
             padding: 80px 0;
             background-color: #1e2615;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234A5D23' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .interactive-section::before {
+            content: '• • • • •';
+            display: block;
+            text-align: center;
+            color: var(--accent);
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
         }
         
         .card-container {
@@ -326,25 +441,73 @@
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 10px;
+            border-radius: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 30px;
+            border: 2px solid var(--border);
         }
         
         .flip-card-front {
             background-color: var(--card-bg);
             color: var(--light);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .flip-card-front::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+        }
+        
+        .flip-card-front::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
         }
         
         .flip-card-back {
             background-color: var(--primary);
-            color: white;
+            color: var(--light);
             transform: rotateY(180deg);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23A68A64' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 5v1H5V0zm1 5v1H5L0 1v1h1L5 5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .flip-card-back::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--light);
+            border-right: 2px solid var(--light);
+        }
+        
+        .flip-card-back::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--light);
+            border-left: 2px solid var(--light);
         }
         
         .flip-card-icon {
@@ -355,21 +518,64 @@
         .flip-card-front h3, .flip-card-back h3 {
             margin-bottom: 15px;
             font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .flip-card-back h3 {
+            border-bottom: 1px solid var(--light);
+            padding-bottom: 5px;
+            display: inline-block;
         }
         
         /* Quiz Section */
         .quiz-section {
             padding: 80px 0;
             background-color: var(--dark);
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23586B33' fill-opacity='0.1'%3E%3Cpath d='M25 0 L50 25 L25 50 L0 25z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .quiz-section::before {
+            content: '• • • • •';
+            display: block;
+            text-align: center;
+            color: var(--accent);
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
         }
         
         .quiz-container {
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 0;
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 2px solid var(--border);
+            position: relative;
+        }
+        
+        .quiz-container::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+        }
+        
+        .quiz-container::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
         }
         
         .quiz-container.animate-on-scroll {
@@ -391,6 +597,11 @@
             color: var(--light);
             margin-bottom: 15px;
             font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            display: inline-block;
         }
         
         .quiz-options {
@@ -402,9 +613,17 @@
         .quiz-option {
             background-color: rgba(255, 255, 255, 0.1);
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 0;
             cursor: pointer;
             transition: all 0.3s;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        .quiz-option::before {
+            content: '→ ';
+            color: var(--accent);
+            font-weight: bold;
         }
         
         .quiz-option:hover {
@@ -426,8 +645,9 @@
         .quiz-feedback {
             margin-top: 20px;
             padding: 15px;
-            border-radius: 5px;
+            border-radius: 0;
             display: none;
+            border: 1px solid var(--border);
         }
         
         .quiz-feedback.correct {
@@ -452,6 +672,17 @@
         .resources-section {
             padding: 80px 0;
             background-color: #1e2615;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23A68A64' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .resources-section::before {
+            content: '• • • • •';
+            display: block;
+            text-align: center;
+            color: var(--accent);
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
         }
         
         .resources-grid {
@@ -464,12 +695,38 @@
         
         .resource-card {
             background-color: var(--card-bg);
-            border-radius: 10px;
+            border-radius: 0;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s, box-shadow 0.3s;
             max-width: 350px;
             width: 100%;
+            border: 2px solid var(--border);
+            position: relative;
+        }
+        
+        .resource-card::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--accent);
+            border-right: 2px solid var(--accent);
+            z-index: 1;
+        }
+        
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--accent);
+            border-left: 2px solid var(--accent);
+            z-index: 1;
         }
         
         .resource-card.animate-on-scroll {
@@ -496,21 +753,41 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .resource-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23A68A64' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 5v1H5V0zm1 5v1H5L0 1v1h1L5 5z'/%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
         }
         
         .resource-icon {
             font-size: 4rem;
             color: var(--highlight);
+            position: relative;
+            z-index: 1;
         }
         
         .resource-content {
             padding: 20px;
             text-align: center;
+            position: relative;
         }
         
         .resource-content h3 {
             color: var(--light);
             margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            display: inline-block;
         }
         
         .resource-content p {
@@ -525,6 +802,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background-image: linear-gradient(135deg, rgba(74, 93, 35, 0.9) 0%, rgba(166, 138, 100, 0.9) 100%);
         }
         
         .cta-section::before {
@@ -534,25 +812,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(74, 93, 35, 0.4) 0%, rgba(194, 112, 61, 0.2) 100%);
-            animation: ctaBgPulse 8s infinite alternate;
-        }
-        
-        @keyframes ctaBgPulse {
-            0% {
-                opacity: 0.4;
-                transform: scale(1);
-            }
-            100% {
-                opacity: 0.8;
-                transform: scale(1.1);
-            }
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23E8E3D5' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            z-index: 0;
         }
         
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
             position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 1;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: var(--light);
+            text-shadow: 3px 3px 0 var(--accent), 
+                         -1px -1px 0 var(--dark);
         }
         
         .cta-section.animate-on-scroll h2 {
@@ -571,6 +847,7 @@
             margin: 0 auto 40px;
             font-size: 1.1rem;
             position: relative;
+            z-index: 1;
         }
         
         .cta-section.animate-on-scroll p {
@@ -585,15 +862,30 @@
         }
         
         .cta-button-large {
-            background-color: var(--light);
-            color: var(--primary);
+            background-color: var(--dark);
+            color: var(--light);
             padding: 15px 30px;
-            border-radius: 5px;
+            border-radius: 0;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s;
             position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--light);
+        }
+        
+        .cta-button-large::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border: 1px solid var(--light);
+            pointer-events: none;
         }
         
         .cta-section.animate-on-scroll .cta-button-large {
@@ -610,6 +902,7 @@
         .cta-button-large:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background-color: var(--accent);
         }
         
         /* Footer */
@@ -618,6 +911,8 @@
             color: var(--light);
             padding: 30px 0;
             text-align: center;
+            border-top: 3px solid var(--border);
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23586B33' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
         }
         
         .footer-content {
@@ -630,6 +925,8 @@
             color: var(--light);
             margin-bottom: 10px;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         .footer-logo span {
@@ -649,24 +946,6 @@
             font-size: 0.9rem;
         }
         
-        /* Progress bar */
-        .progress-container {
-            width: 100%;
-            height: 5px;
-            background: rgba(255,255,255,0.1);
-            position: fixed;
-            top: 80px;
-            left: 0;
-            z-index: 99;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: var(--accent);
-            width: 0%;
-            transition: width 0.2s;
-        }
-        
         /* Floating action button */
         .fab {
             position: fixed;
@@ -675,7 +954,7 @@
             width: 60px;
             height: 60px;
             background-color: var(--primary);
-            border-radius: 50%;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -684,23 +963,12 @@
             cursor: pointer;
             transition: all 0.3s;
             z-index: 999;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(74, 93, 35, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(74, 93, 35, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(74, 93, 35, 0);
-            }
+            border: 2px solid var(--border);
         }
         
         .fab:hover {
             transform: scale(1.1);
+            background-color: var(--accent);
         }
         
         .tooltip {
@@ -711,10 +979,10 @@
         .tooltiptext {
             visibility: hidden;
             width: 120px;
-            background-color: black;
-            color: #fff;
+            background-color: var(--dark);
+            color: var(--light);
             text-align: center;
-            border-radius: 6px;
+            border-radius: 0;
             padding: 5px;
             position: absolute;
             z-index: 1;
@@ -723,6 +991,10 @@
             margin-left: -60px;
             opacity: 0;
             transition: opacity 0.3s;
+            border: 1px solid var(--border);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
         
         .tooltip:hover .tooltiptext {
@@ -778,436 +1050,3 @@
                 top: 120px;
             }
         }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">Trench<span>Guide</span></a>
-            <nav>
-                <ul>
-                    <li><a href="#learning-path">Learning Path</a></li>
-                    <li><a href="#strategies">Key Strategies</a></li>
-                    <li><a href="#quiz">Test Your Knowledge</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Progress bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Welcome To The Trenches, Soldier</h1>
-            <p>You've taken your first step into the exciting world of meme coin trading. Let's arm you with the knowledge and tools you need to navigate this battlefield.</p>
-            <a href="#learning-path" class="cta-button">Start Your Training</a>
-        </div>
-    </section>
-
-    <!-- Resources Section -->
-    <section class="resources-section" id="resources">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Essential Resources</h2>
-                <p>Access these valuable tools to enhance your meme coin trading journey.</p>
-            </div>
-            <div class="resources-grid">
-                <div class="resource-card animate-on-scroll">
-                    <div class="resource-img">
-                        <div class="resource-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                                <path d="M2 17l10 5 10-5"></path>
-                                <path d="M2 12l10 5 10-5"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Advanced Trading Guide</h3>
-                        <p>Our comprehensive 50-page guide covers everything from technical analysis to psychological preparation.</p>
-                        <a href="#" class="cta-button">Download Guide</a>
-                    </div>
-                </div>
-                <div class="resource-card animate-on-scroll">
-                    <div class="resource-img">
-                        <div class="resource-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="12" y1="8" x2="12" y2="16"></line>
-                                <line x1="8" y1="12" x2="16" y2="12"></line>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Risk Calculator Tool</h3>
-                        <p>Calculate optimal position sizes based on your risk tolerance and portfolio management strategy.</p>
-                        <a href="#" class="cta-button">Access Tool</a>
-                    </div>
-                </div>
-                <div class="resource-card animate-on-scroll">
-                    <div class="resource-img">
-                        <div class="resource-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Community Discord</h3>
-                        <p>Join our exclusive community for real-time signals, expert analysis, and networking with fellow traders.</p>
-                        <a href="#" class="cta-button">Join Discord</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section class="cta-section animate-on-scroll" id="cta">
-        <div class="container">
-            <h2>Ready to Start Your Journey?</h2>
-            <p>Join thousands of traders who've already taken their skills to the next level with our premium community.</p>
-            <a href="#" class="cta-button-large">Join The Trenches</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Trench<span>Guide</span></div>
-                <p class="footer-text">Your strategic partner in navigating the volatile world of meme coin trading.</p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 TrenchGuide. All Rights Reserved. <br>Disclaimer: Trading cryptocurrencies involves significant risk. Only trade with funds you can afford to lose.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating Action Button -->
-    <div class="fab tooltip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="12" y1="8" x2="12" y2="16"></line>
-            <line x1="8" y1="12" x2="16" y2="12"></line>
-        </svg>
-        <span class="tooltiptext">Get Help</span>
-    </div>
-
-    <script>
-        // Progress bar
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            document.getElementById("progressBar").style.width = scrolled + "%";
-        };
-
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.animate-on-scroll');
-            
-            function checkScroll() {
-                const triggerBottom = window.innerHeight * 0.85;
-                
-                animateElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    
-                    if (elementTop < triggerBottom) {
-                        element.classList.add('active');
-                    }
-                });
-            }
-            
-            // Initial check - force all elements above the fold to be visible
-            setTimeout(function() {
-                checkScroll();
-            }, 100);
-            
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
-            
-            // Add delays to the animation of flip cards
-            const flipCards = document.querySelectorAll('.flip-card');
-            flipCards.forEach((card, index) => {
-                card.style.animationDelay = `${0.2 * index}s`;
-                card.style.transitionDelay = `${0.2 * index}s`;
-            });
-            
-            // Add delays to the animation of resource cards
-            const resourceCards = document.querySelectorAll('.resource-card');
-            resourceCards.forEach((card, index) => {
-                card.style.animationDelay = `${0.2 * index}s`;
-                card.style.transitionDelay = `${0.2 * index}s`;
-            });
-            
-            // Add delays to the animation of steps
-            const steps = document.querySelectorAll('.step');
-            steps.forEach((step, index) => {
-                step.style.animationDelay = `${0.2 * index}s`;
-                step.style.transitionDelay = `${0.2 * index}s`;
-            });
-            
-            // Force initial animations to start
-            document.querySelector('.cta-section').classList.add('active');
-        });
-        
-        // Quiz functionality
-        document.getElementById('checkAnswer').addEventListener('click', function() {
-            const selectedOption = document.querySelector('.quiz-option.selected');
-            if (!selectedOption) {
-                alert('Please select an answer!');
-                return;
-            }
-            
-            const feedbackEl = document.querySelector('.quiz-feedback');
-            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
-            
-            if (isCorrect) {
-                selectedOption.classList.add('correct');
-                feedbackEl.classList.add('correct');
-                feedbackEl.classList.remove('wrong');
-                feedbackEl.textContent = 'Correct! Complex tax structures can often be a red flag, indicating potential issues with tokenomics.';
-            } else {
-                selectedOption.classList.add('wrong');
-                const correctOption = document.querySelector('.quiz-option[data-correct="true"]');
-                correctOption.classList.add('correct');
-                feedbackEl.classList.add('wrong');
-                feedbackEl.classList.remove('correct');
-                feedbackEl.textContent = 'Incorrect. The correct answer is: Complex tokenomics with multiple tax structures, which can often indicate a project with questionable sustainability.';
-            }
-            
-            this.style.display = 'none';
-            document.getElementById('nextQuestion').style.display = 'block';
-        });
-        
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                document.querySelectorAll('.quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                this.classList.add('selected');
-            });
-        });
-        
-        document.getElementById('nextQuestion').addEventListener('click', function() {
-            // For a multi-question quiz, you would load the next question here
-            alert('This is the end of our sample quiz. In the full version, we have 20+ questions to test your knowledge!');
-        });
-        
-        // Floating action button
-        document.querySelector('.fab').addEventListener('click', function() {
-            alert('Our support team is available 24/7. Send an email to support@trenchguide.com or join our Discord for immediate assistance.');
-        });
-    </script>
-</body>
-</html>
-
-    <!-- Learning Path Section -->
-    <section class="learning-path" id="learning-path">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Your Meme Coin Trading Journey</h2>
-                <p>Follow this strategic path to build a solid foundation in meme coin trading.</p>
-            </div>
-            <div class="path-steps">
-                <div class="step animate-on-scroll">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Understanding Meme Coin Basics</h3>
-                        <p>Before diving into trading, it's crucial to understand what meme coins are and how they differ from traditional cryptocurrencies. Meme coins are typically created as jokes or for fun, inspired by internet memes or cultural phenomena.</p>
-                        <p><strong>Key Concepts:</strong></p>
-                        <ul>
-                            <li>Market capitalization and liquidity</li>
-                            <li>Community-driven value</li>
-                            <li>Viral marketing and social media influence</li>
-                            <li>High volatility and risk factors</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="step animate-on-scroll">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Setting Up Your Trading Arsenal</h3>
-                        <p>To effectively trade meme coins, you need the right tools and platforms at your disposal.</p>
-                        <p><strong>Essential Setup:</strong></p>
-                        <ul>
-                            <li>Secure wallet selection (Metamask, Trust Wallet, etc.)</li>
-                            <li>Exchange accounts (DEXs like Uniswap, SushiSwap, PancakeSwap)</li>
-                            <li>Bridge solutions for cross-chain transactions</li>
-                            <li>Portfolio tracking tools</li>
-                            <li>Security best practices</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="step animate-on-scroll">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Research & Intelligence Gathering</h3>
-                        <p>Successful meme coin trading relies heavily on effective research techniques and staying ahead of trends.</p>
-                        <p><strong>Research Channels:</strong></p>
-                        <ul>
-                            <li>Twitter/X for early coin announcements and influencer activity</li>
-                            <li>Discord and Telegram communities</li>
-                            <li>Reddit for community sentiment</li>
-                            <li>Contract analysis and audit verification</li>
-                            <li>Trading volume patterns and wallet distribution</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="step animate-on-scroll">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Risk Management & Trading Psychology</h3>
-                        <p>The high volatility of meme coins makes risk management absolutely essential for long-term success.</p>
-                        <p><strong>Survival Tactics:</strong></p>
-                        <ul>
-                            <li>Setting firm stop-loss levels</li>
-                            <li>Position sizing based on risk tolerance</li>
-                            <li>Managing FOMO and FUD responses</li>
-                            <li>Developing exit strategies</li>
-                            <li>Only investing what you can afford to lose</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="step animate-on-scroll">
-                    <div class="step-number">5</div>
-                    <div class="step-content">
-                        <h3>Advanced Trading Strategies</h3>
-                        <p>Once you've mastered the basics, it's time to implement more sophisticated trading approaches.</p>
-                        <p><strong>Strategic Approaches:</strong></p>
-                        <ul>
-                            <li>Early entry techniques based on community metrics</li>
-                            <li>Volume analysis for trending coins</li>
-                            <li>Multi-phase exit strategies</li>
-                            <li>Swing trading during meme season</li>
-                            <li>Leveraging cross-chain opportunities</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Cards Section -->
-    <section class="interactive-section" id="strategies">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Key Strategies For Success</h2>
-                <p>Hover over each card to reveal detailed insights into essential meme coin trading strategies.</p>
-            </div>
-            <div class="card-container">
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="12" y1="8" x2="12" y2="12"></line>
-                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                                </svg>
-                            </div>
-                            <h3>Social Media Intelligence</h3>
-                            <p>Tracking viral potential...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Social Media Intelligence</h3>
-                            <p>Track Twitter engagement metrics like retweets, likes, and comment velocity. Look for sudden spikes in followers for project accounts. Set up alerts for trending hashtags in the crypto space.</p>
-                            <p>Pro tip: Monitor wallet interactions of known influencers to spot early movements.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-                                    <line x1="12" y1="9" x2="12" y2="13"></line>
-                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                                </svg>
-                            </div>
-                            <h3>Scam Detection</h3>
-                            <p>Avoiding the traps...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Scam Detection</h3>
-                            <p>Verify contract ownership is renounced or locked. Check liquidity locking status and duration. Analyze token distribution for concentrated whale holdings.</p>
-                            <p>Red flags: Anonymous teams, copied websites, unrealistic promises, and restricted selling functions.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                                </svg>
-                            </div>
-                            <h3>Timing Your Entry</h3>
-                            <p>When to pull the trigger...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Timing Your Entry</h3>
-                            <p>Look for early accumulation phases with steady volume increases. Enter after initial volatility settles but before major marketing pushes.</p>
-                            <p>Key indicator: Rising floor price with increasing holder count signals growing community strength and reduced selling pressure.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#8B9962" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                </svg>
-                            </div>
-                            <h3>Exit Strategy</h3>
-                            <p>Knowing when to leave...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Exit Strategy</h3>
-                            <p>Take profits in stages - 25% at 2x, 25% at 3x, leaving the rest to ride. Set trailing stop losses to lock in gains during high volatility.</p>
-                            <p>Watch for declining social engagement and volume drops as early warning signs of momentum loss.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quiz Section -->
-    <section class="quiz-section" id="quiz">
-        <div class="container">
-            <div class="section-title animate-on-scroll">
-                <h2>Test Your Knowledge</h2>
-                <p>Check your understanding of meme coin trading fundamentals with this quick quiz.</p>
-            </div>
-            <div class="quiz-container animate-on-scroll">
-                <div class="quiz-question" id="question1">
-                    <h3>1. Which of the following is NOT typically a good indicator of a meme coin's potential?</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-correct="false">Strong and growing community engagement</div>
-                        <div class="quiz-option" data-correct="false">Liquidity locked for an extended period</div>
-                        <div class="quiz-option" data-correct="true">Complex tokenomics with multiple tax structures</div>
-                        <div class="quiz-option" data-correct="false">Transparent team with proven track record</div>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-                <div class="quiz-navigation">
-                    <button class="cta-button" id="checkAnswer">Check Answer</button>
-                    <button class="cta-button" id="nextQuestion" style="display: none;">Next Question</button>
-                </div>
-            </div>
-        </div>
-    </section>
