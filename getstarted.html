@@ -6,15 +6,13 @@
     <title>TrenchGuide - Getting Started</title>
     <style>
         :root {
-            --primary: #4A5D23; /* Dark olive green */
-            --secondary: #A68A64; /* Tan */
-            --dark: #262D1A; /* Very dark green */
-            --light: #E8E3D5; /* Light tan */
-            --accent: #C2703D; /* Rust/orange accent */
-            --text: #E8E3D5; /* Light text color */
-            --card-bg: #33401E; /* Darker olive */
-            --border: #586B33; /* Medium olive */
-            --highlight: #8B9962; /* Light olive */
+            --primary: #5928E5;
+            --dark: #121212;
+            --light: #f7f7f7;
+            --accent: #FF6B00;
+            --text: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --border: #333333;
         }
         
         * {
@@ -38,7 +36,7 @@
         
         /* Header Styles */
         header {
-            background-color: rgba(38, 45, 26, 0.95); /* Dark green with opacity */
+            background-color: rgba(18, 18, 18, 0.95);
             padding: 20px 0;
             position: sticky;
             top: 0;
@@ -80,12 +78,12 @@
         }
         
         nav ul li a:hover {
-            color: var(--secondary);
+            color: var(--primary);
         }
         
         .cta-button {
             background-color: var(--primary);
-            color: var(--light);
+            color: white;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
@@ -94,17 +92,17 @@
         }
         
         .cta-button:hover {
-            background-color: var(--border);
+            background-color: #4617c9;
             transform: scale(1.05);
         }
         
         /* Hero Section */
         .hero {
             background-color: var(--dark);
-            color: var(--light);
+            color: white;
             padding: 60px 0;
             text-align: center;
-            background-image: linear-gradient(135deg, rgba(74, 93, 35, 0.8), rgba(38, 45, 26, 0.9));
+            background-image: linear-gradient(135deg, rgba(89, 40, 229, 0.8), rgba(0, 0, 0, 0.9));
             background-size: cover;
             background-position: center;
             position: relative;
@@ -181,7 +179,7 @@
             bottom: 0;
             left: 24px;
             width: 4px;
-            background: var(--accent);
+            background: var(--primary);
             opacity: 0.4;
         }
         
@@ -222,7 +220,6 @@
             flex-grow: 1;
             transform: perspective(1000px) rotateY(0deg);
             transition: transform 0.5s;
-            border: 1px solid var(--border);
         }
         
         .step-content:hover {
@@ -238,7 +235,7 @@
         /* Interactive Cards */
         .interactive-section {
             padding: 80px 0;
-            background-color: #1e2415; /* Slightly darker than --dark */
+            background-color: #0a0a0a;
         }
         
         .card-container {
@@ -291,15 +288,13 @@
             background-color: var(--card-bg);
             color: var(--light);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 1px solid var(--border);
         }
         
         .flip-card-back {
             background-color: var(--primary);
-            color: var(--light);
+            color: white;
             transform: rotateY(180deg);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 1px solid var(--border);
         }
         
         .flip-card-icon {
@@ -327,7 +322,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             opacity: 0;
             transform: translateY(40px);
-            border: 1px solid var(--border);
         }
         
         .quiz-container.animate {
@@ -356,7 +350,6 @@
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s;
-            border: 1px solid var(--border);
         }
         
         .quiz-option:hover {
@@ -368,11 +361,11 @@
         }
         
         .quiz-option.correct {
-            background-color: var(--highlight);
+            background-color: #2ecc71;
         }
         
         .quiz-option.wrong {
-            background-color: var(--accent);
+            background-color: #e74c3c;
         }
         
         .quiz-feedback {
@@ -383,14 +376,14 @@
         }
         
         .quiz-feedback.correct {
-            background-color: rgba(139, 153, 98, 0.2);
-            color: var(--highlight);
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
             display: block;
         }
         
         .quiz-feedback.wrong {
-            background-color: rgba(194, 112, 61, 0.2);
-            color: var(--accent);
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
             display: block;
         }
         
@@ -403,13 +396,12 @@
         /* Resource Cards */
         .resources-section {
             padding: 80px 0;
-            background-color: #1e2415; /* Slightly darker than --dark */
+            background-color: #0a0a0a;
         }
         
         .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            display: flex;
+            justify-content: center;
             margin-top: 40px;
         }
         
@@ -421,7 +413,8 @@
             transition: transform 0.3s, box-shadow 0.3s;
             opacity: 0;
             transform: translateY(40px);
-            border: 1px solid var(--border);
+            max-width: 400px;
+            width: 100%;
         }
         
         .resource-card.animate {
@@ -435,22 +428,22 @@
         
         .resource-img {
             height: 200px;
-            background-color: #293319; /* Darker than card-bg */
+            background-color: #333;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .resource-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             font-size: 4rem;
-            color: var(--secondary);
+            color: var(--primary);
         }
         
         .resource-content {
             padding: 20px;
+            text-align: center;
         }
         
         .resource-content h3 {
@@ -465,7 +458,7 @@
         /* CTA Section */
         .cta-section {
             background-color: var(--primary);
-            color: var(--light);
+            color: white;
             padding: 80px 0;
             text-align: center;
             position: relative;
@@ -479,7 +472,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(74, 93, 35, 0.4) 0%, rgba(194, 112, 61, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(89, 40, 229, 0.4) 0%, rgba(255, 107, 0, 0.2) 100%);
             animation: ctaBgPulse 8s infinite alternate;
         }
         
@@ -520,7 +513,7 @@
         }
         
         .cta-button-large {
-            background-color: var(--light);
+            background-color: white;
             color: var(--primary);
             padding: 15px 30px;
             border-radius: 5px;
@@ -539,14 +532,13 @@
         
         .cta-button-large:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         /* Footer */
         footer {
-            background-color: #1e2415; /* Slightly darker than --dark */
-            color: var(--light);
+            background-color: #0a0a0a;
+            color: white;
             padding: 30px 0;
             text-align: center;
         }
@@ -558,7 +550,7 @@
         .footer-logo {
             font-size: 24px;
             font-weight: 700;
-            color: var(--light);
+            color: white;
             margin-bottom: 10px;
             display: inline-block;
         }
@@ -570,13 +562,13 @@
         .footer-text {
             max-width: 600px;
             margin: 0 auto;
-            color: var(--secondary);
+            color: #bbb;
         }
         
         .footer-bottom {
-            border-top: 1px solid rgba(232, 227, 213, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 20px;
-            color: var(--secondary);
+            color: #bbb;
             font-size: 0.9rem;
         }
         
@@ -584,7 +576,7 @@
         .progress-container {
             width: 100%;
             height: 5px;
-            background: rgba(232, 227, 213, 0.1);
+            background: rgba(255,255,255,0.1);
             position: fixed;
             top: 80px;
             left: 0;
@@ -610,7 +602,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--light);
+            color: white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             cursor: pointer;
             transition: all 0.3s;
@@ -620,19 +612,18 @@
         
         @keyframes pulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(74, 93, 35, 0.7);
+                box-shadow: 0 0 0 0 rgba(89, 40, 229, 0.7);
             }
             70% {
-                box-shadow: 0 0 0 15px rgba(74, 93, 35, 0);
+                box-shadow: 0 0 0 15px rgba(89, 40, 229, 0);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(74, 93, 35, 0);
+                box-shadow: 0 0 0 0 rgba(89, 40, 229, 0);
             }
         }
         
         .fab:hover {
             transform: scale(1.1);
-            background-color: var(--border);
         }
         
         .fab i {
@@ -648,8 +639,8 @@
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 120px;
-            background-color: var(--dark);
-            color: var(--light);
+            background-color: black;
+            color: #fff;
             text-align: center;
             border-radius: 6px;
             padding: 5px;
@@ -844,7 +835,13 @@
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <div class="flip-card-icon">🔍</div>
+                            <div class="flip-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5928E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                </svg>
+                            </div>
                             <h3>Social Media Intelligence</h3>
                             <p>Tracking viral potential...</p>
                         </div>
@@ -858,7 +855,13 @@
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <div class="flip-card-icon">⚠️</div>
+                            <div class="flip-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5928E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                </svg>
+                            </div>
                             <h3>Scam Detection</h3>
                             <p>Avoiding the traps...</p>
                         </div>
@@ -872,7 +875,13 @@
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <div class="flip-card-icon">📊</div>
+                            <div class="flip-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5928E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                </svg>
+                            </div>
                             <h3>Timing Your Entry</h3>
                             <p>When to pull the trigger...</p>
                         </div>
@@ -886,44 +895,20 @@
                 <div class="flip-card animate-on-scroll">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
-                            <div class="flip-card-icon">💰</div>
+                            <div class="flip-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#5928E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
+<!-- Continuing the SVG icon that was cut off -->
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
                             <h3>Exit Strategy</h3>
-                            <p>Securing your profits...</p>
+                            <p>Knowing when to leave...</p>
                         </div>
                         <div class="flip-card-back">
                             <h3>Exit Strategy</h3>
-                            <p>Implement a phased exit approach: Remove initial investment at 2-3x, take partial profits at predetermined milestones (5x, 10x), and leave a moonbag for potential parabolic moves.</p>
-                            <p>Watch for declining social metrics and slowing momentum as signs to consider exiting.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">🔄</div>
-                            <h3>Gas Fee Optimization</h3>
-                            <p>Maximizing transaction efficiency...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Gas Fee Optimization</h3>
-                            <p>Use gas tracker tools to identify low-fee periods. Set custom gas prices based on urgency. Consider layer-2 solutions or alternative chains for smaller trades.</p>
-                            <p>Advanced tactic: Use batch
-                            <p>Use gas tracker tools to identify low-fee periods. Set custom gas prices based on urgency. Consider layer-2 solutions or alternative chains for smaller trades.</p>
-                            <p>Advanced tactic: Use batch transactions to combine multiple operations and save on cumulative gas costs during off-peak hours.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">🧠</div>
-                            <h3>Psychological Discipline</h3>
-                            <p>Maintaining mental clarity...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Psychological Discipline</h3>
-                            <p>Develop emotional resilience to withstand extreme price volatility. Establish trading rules before entering positions and stick to them regardless of market sentiment.</p>
-                            <p>Remember: The strongest traders can remain calm during both pumps and dumps, making decisions based on strategy rather than emotion.</p>
+                            <p>Take profits in stages - 25% at 2x, 25% at 3x, leaving the rest to ride. Set trailing stop losses to lock in gains during high volatility.</p>
+                            <p>Watch for declining social engagement and volume drops as early warning signs of momentum loss.</p>
                         </div>
                     </div>
                 </div>
@@ -936,43 +921,22 @@
         <div class="container">
             <div class="section-title animate-on-scroll">
                 <h2>Test Your Knowledge</h2>
-                <p>Let's see if you've absorbed the essential lessons of meme coin trading.</p>
+                <p>Check your understanding of meme coin trading fundamentals with this quick quiz.</p>
             </div>
             <div class="quiz-container animate-on-scroll">
                 <div class="quiz-question" id="question1">
-                    <h3>1. Which of the following is NOT a good indicator of a promising meme coin?</h3>
+                    <h3>1. Which of the following is NOT typically a good indicator of a meme coin's potential?</h3>
                     <div class="quiz-options">
-                        <div class="quiz-option" data-correct="false">Growing community engagement on social platforms</div>
-                        <div class="quiz-option" data-correct="false">Transparent development team with clear communication</div>
-                        <div class="quiz-option" data-correct="true">Promises of guaranteed returns or fixed price floors</div>
-                        <div class="quiz-option" data-correct="false">Unique utility or innovation beyond the meme aspect</div>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-                <div class="quiz-question" id="question2" style="display: none;">
-                    <h3>2. What is the recommended approach to taking profits in meme coin trading?</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-correct="false">Hold until the absolute peak and sell everything at once</div>
-                        <div class="quiz-option" data-correct="true">Implement a phased exit strategy at predetermined targets</div>
-                        <div class="quiz-option" data-correct="false">Never take profits until the coin reaches mainstream adoption</div>
-                        <div class="quiz-option" data-correct="false">Wait for developer announcements before selling</div>
-                    </div>
-                    <div class="quiz-feedback"></div>
-                </div>
-                <div class="quiz-question" id="question3" style="display: none;">
-                    <h3>3. Which risk management strategy is most critical in meme coin trading?</h3>
-                    <div class="quiz-options">
-                        <div class="quiz-option" data-correct="false">Taking loans to maximize position size</div>
-                        <div class="quiz-option" data-correct="false">Investing equal amounts in all new meme coins</div>
-                        <div class="quiz-option" data-correct="true">Only investing what you can afford to lose completely</div>
-                        <div class="quiz-option" data-correct="false">Waiting for mainstream news coverage before entering</div>
+                        <div class="quiz-option" data-correct="false">Strong and growing community engagement</div>
+                        <div class="quiz-option" data-correct="false">Liquidity locked for an extended period</div>
+                        <div class="quiz-option" data-correct="true">Complex tokenomics with multiple tax structures</div>
+                        <div class="quiz-option" data-correct="false">Transparent team with proven track record</div>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
                 <div class="quiz-navigation">
-                    <button class="cta-button quiz-prev" style="display: none;">Previous</button>
-                    <button class="cta-button quiz-next">Next Question</button>
-                    <button class="cta-button quiz-finish" style="display: none;">See Results</button>
+                    <button class="cta-button" id="checkAnswer">Check Answer</button>
+                    <button class="cta-button" id="nextQuestion" style="display: none;">Next Question</button>
                 </div>
             </div>
         </div>
@@ -983,49 +947,35 @@
         <div class="container">
             <div class="section-title animate-on-scroll">
                 <h2>Essential Resources</h2>
-                <p>Arm yourself with these tools and references to enhance your meme coin trading effectiveness.</p>
+                <p>Access these valuable tools to enhance your meme coin trading journey.</p>
             </div>
             <div class="resources-grid">
                 <div class="resource-card animate-on-scroll">
                     <div class="resource-img">
-                        <div class="resource-icon">📱</div>
+                        <div class="resource-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#5928E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5"></path>
+                                <path d="M2 12l10 5 10-5"></path>
+                            </svg>
+                        </div>
                     </div>
                     <div class="resource-content">
-                        <h3>Trading Tools</h3>
-                        <p>Essential platforms and applications for tracking, analyzing, and executing meme coin trades efficiently.</p>
-                        <a href="#" class="cta-button">Explore Tools</a>
-                    </div>
-                </div>
-                <div class="resource-card animate-on-scroll">
-                    <div class="resource-img">
-                        <div class="resource-icon">📊</div>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Market Analysis</h3>
-                        <p>Learn how to read market signals, identify trends, and understand the metrics that matter for meme coin evaluation.</p>
-                        <a href="#" class="cta-button">Learn Analysis</a>
-                    </div>
-                </div>
-                <div class="resource-card animate-on-scroll">
-                    <div class="resource-img">
-                        <div class="resource-icon">🛡️</div>
-                    </div>
-                    <div class="resource-content">
-                        <h3>Security Guide</h3>
-                        <p>Protect your investments with comprehensive security practices and scam prevention techniques.</p>
-                        <a href="#" class="cta-button">Stay Secure</a>
+                        <h3>Advanced Trading Guide</h3>
+                        <p>Our comprehensive 50-page guide covers everything from technical analysis to psychological preparation.</p>
+                        <a href="#" class="cta-button">Download Guide</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Call to Action Section -->
     <section class="cta-section" id="cta">
         <div class="container">
-            <h2>Ready For Battle?</h2>
-            <p>Now that you're armed with knowledge, it's time to put your training into practice. Join our community to continue learning and share experiences with fellow traders.</p>
-            <a href="#" class="cta-button-large">Join The TrenchGuide Community</a>
+            <h2>Ready to Start Your Journey?</h2>
+            <p>Join thousands of traders who've already taken their skills to the next level with our premium community.</p>
+            <a href="#" class="cta-button-large">Join The Trenches</a>
         </div>
     </section>
 
@@ -1034,161 +984,102 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">Trench<span>Guide</span></div>
-                <p class="footer-text">Your trusted resource for navigating the volatile world of meme coin trading.</p>
+                <p class="footer-text">Your strategic partner in navigating the volatile world of meme coin trading.</p>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 TrenchGuide. All rights reserved. This information is for educational purposes only and does not constitute financial advice.</p>
+                <p>&copy; 2025 TrenchGuide. All Rights Reserved. <br>Disclaimer: Trading cryptocurrencies involves significant risk. Only trade with funds you can afford to lose.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating action button -->
+    <!-- Floating Action Button -->
     <div class="fab tooltip">
-        <i>💬</i>
-        <span class="tooltiptext">Community Chat</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+            <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+        <span class="tooltiptext">Get Help</span>
     </div>
 
     <script>
         // Progress bar
         window.onscroll = function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
             document.getElementById("progressBar").style.width = scrolled + "%";
-            
-            // Animate elements on scroll
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(element => {
-                const position = element.getBoundingClientRect();
-                // If element is in viewport
-                if(position.top < window.innerHeight - 100) {
-                    element.classList.add('active');
-                }
-            });
+        };
+
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
         };
         
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+        
         // Quiz functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const questions = document.querySelectorAll('.quiz-question');
-            const nextBtn = document.querySelector('.quiz-next');
-            const prevBtn = document.querySelector('.quiz-prev');
-            const finishBtn = document.querySelector('.quiz-finish');
-            let currentQuestion = 0;
-            let score = 0;
+        document.getElementById('checkAnswer').addEventListener('click', function() {
+            const selectedOption = document.querySelector('.quiz-option.selected');
+            if (!selectedOption) {
+                alert('Please select an answer!');
+                return;
+            }
             
-            // Add click event to options
-            document.querySelectorAll('.quiz-option').forEach(option => {
-                option.addEventListener('click', function() {
-                    // Remove selected class from all options in this question
-                    this.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    
-                    // Add selected class to clicked option
-                    this.classList.add('selected');
+            const feedbackEl = document.querySelector('.quiz-feedback');
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            
+            if (isCorrect) {
+                selectedOption.classList.add('correct');
+                feedbackEl.classList.add('correct');
+                feedbackEl.classList.remove('wrong');
+                feedbackEl.textContent = 'Correct! Complex tax structures can often be a red flag, indicating potential issues with tokenomics.';
+            } else {
+                selectedOption.classList.add('wrong');
+                const correctOption = document.querySelector('.quiz-option[data-correct="true"]');
+                correctOption.classList.add('correct');
+                feedbackEl.classList.add('wrong');
+                feedbackEl.classList.remove('correct');
+                feedbackEl.textContent = 'Incorrect. The correct answer is: Complex tokenomics with multiple tax structures, which can often indicate a project with questionable sustainability.';
+            }
+            
+            this.style.display = 'none';
+            document.getElementById('nextQuestion').style.display = 'block';
+        });
+        
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
                 });
+                this.classList.add('selected');
             });
-            
-            // Next button functionality
-            nextBtn.addEventListener('click', function() {
-                const selectedOption = questions[currentQuestion].querySelector('.quiz-option.selected');
-                
-                if (selectedOption) {
-                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
-                    const feedback = questions[currentQuestion].querySelector('.quiz-feedback');
-                    
-                    if (isCorrect) {
-                        selectedOption.classList.add('correct');
-                        feedback.textContent = "Correct! You understand this concept well.";
-                        feedback.classList.add('correct');
-                        score++;
-                    } else {
-                        selectedOption.classList.add('wrong');
-                        const correctOption = questions[currentQuestion].querySelector('.quiz-option[data-correct="true"]');
-                        correctOption.classList.add('correct');
-                        feedback.textContent = "Incorrect. The right answer has been highlighted.";
-                        feedback.classList.add('wrong');
-                    }
-                    
-                    feedback.style.display = 'block';
-                    
-                    // Move to next question after delay
-                    setTimeout(() => {
-                        questions[currentQuestion].style.display = 'none';
-                        currentQuestion++;
-                        
-                        if (currentQuestion < questions.length) {
-                            questions[currentQuestion].style.display = 'block';
-                            feedback.style.display = 'none';
-                            prevBtn.style.display = 'block';
-                        }
-                        
-                        if (currentQuestion === questions.length - 1) {
-                            nextBtn.style.display = 'none';
-                            finishBtn.style.display = 'block';
-                        }
-                    }, 1500);
-                } else {
-                    alert('Please select an answer before proceeding.');
-                }
-            });
-            
-            // Previous button functionality
-            prevBtn.addEventListener('click', function() {
-                questions[currentQuestion].style.display = 'none';
-                currentQuestion--;
-                questions[currentQuestion].style.display = 'block';
-                
-                if (currentQuestion === 0) {
-                    prevBtn.style.display = 'none';
-                }
-                
-                nextBtn.style.display = 'block';
-                finishBtn.style.display = 'none';
-            });
-            
-            // Finish button functionality
-            finishBtn.addEventListener('click', function() {
-                const selectedOption = questions[currentQuestion].querySelector('.quiz-option.selected');
-                
-                if (selectedOption) {
-                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
-                    const feedback = questions[currentQuestion].querySelector('.quiz-feedback');
-                    
-                    if (isCorrect) {
-                        selectedOption.classList.add('correct');
-                        feedback.textContent = "Correct! You understand this concept well.";
-                        feedback.classList.add('correct');
-                        score++;
-                    } else {
-                        selectedOption.classList.add('wrong');
-                        const correctOption = questions[currentQuestion].querySelector('.quiz-option[data-correct="true"]');
-                        correctOption.classList.add('correct');
-                        feedback.textContent = "Incorrect. The right answer has been highlighted.";
-                        feedback.classList.add('wrong');
-                    }
-                    
-                    feedback.style.display = 'block';
-                    
-                    // Show results after delay
-                    setTimeout(() => {
-                        questions[currentQuestion].style.display = 'none';
-                        const quizContainer = document.querySelector('.quiz-container');
-                        quizContainer.innerHTML = `
-                            <h3>Quiz Complete!</h3>
-                            <p>You scored ${score} out of ${questions.length} questions correctly.</p>
-                            <p>${score === questions.length ? 'Perfect! You\'re ready for the trenches!' : 
-                               score >= questions.length / 2 ? 'Good job! You have a solid understanding of meme coin trading.' : 
-                               'Keep learning! Review the material and try again to improve your knowledge.'}
-                            </p>
-                            <button class="cta-button" onclick="location.reload()">Retake Quiz</button>
-                        `;
-                    }, 1500);
-                } else {
-                    alert('Please select an answer before proceeding.');
-                }
-            });
+        });
+        
+        document.getElementById('nextQuestion').addEventListener('click', function() {
+            // For a multi-question quiz, you would load the next question here
+            alert('This is the end of our sample quiz. In the full version, we have 20+ questions to test your knowledge!');
+        });
+        
+        // Floating action button
+        document.querySelector('.fab').addEventListener('click', function() {
+            alert('Our support team is available 24/7. Send an email to support@trenchguide.com or join our Discord for immediate assistance.');
         });
     </script>
 </body>
 </html>
+                                        
