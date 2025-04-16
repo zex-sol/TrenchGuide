@@ -424,6 +424,10 @@
     align-items: center;
     padding: 20px;
 }
+/* Add this to fix the text on flip-card-back */
+.flip-card-back * {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 
 .flip-card-back h3 {
     text-align: center;
