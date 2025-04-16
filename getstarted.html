@@ -396,6 +396,8 @@
     background-color: transparent;
     perspective: 1000px;
     height: 300px;
+    width: 100%;
+    transform-style: preserve-3d;
 }
 
 .flip-card.animate-on-scroll {
@@ -420,6 +422,7 @@
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    transform-origin: center center;
 }
 
 .flip-card-front, .flip-card-back {
@@ -435,6 +438,7 @@
     align-items: center;
     padding: 30px;
     border: 2px solid var(--border);
+    transform-style: preserve-3d;
 }
 
 .flip-card-front {
@@ -1175,7 +1179,7 @@
                 <div class="resource-content">
                     <h3>Tools</h3>
                     <p>Join our community tools platform for real-time analysis, expert insights, and essential trading resources.</p>
-                    <a href="https://discord.com/" class="cta-button">Access Tools</a>
+                    <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="cta-button">Access Tools</a>
                 </div>
             </div>
         </div>
