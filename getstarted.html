@@ -1414,5 +1414,96 @@ footer::before {
     .step-content, .quiz-container, .resource-card {
         box-shadow: none;
         border: 1px solid #ccc;
-    }
-}
+        var(--dark);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Trench<span>Guide</span></a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/guides">Guides</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>About TrenchGuide</h1>
+            <p>Your battle-tested resource for surviving the memecoin trenches.</p>
+            <a href="/guides" class="cta-button">Explore Guides</a>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Our Mission</h2>
+                <p>At TrenchGuide, we're committed to empowering traders with knowledge, insights, and community-driven strategies in the wild world of meme coins.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image animate">
+                    <div class="about-image-placeholder">🪖</div>
+                </div>
+                <div class="about-text animate">
+                    <h3>Who We Are</h3>
+                    <p>Founded by a crew of crypto fanatics and strategy enthusiasts, TrenchGuide serves as your basecamp for all things memecoins. Whether you’re a newcomer or a seasoned soldier, we’ve got your six.</p>
+                    <p>Our platform offers real-time pattern spotting tips, educational resources, and opportunities to connect with other traders navigating the same volatile battlefield.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title animate">
+                <h2>Meet the Team</h2>
+                <p>The minds behind the memes, missions, and market moves.</p>
+            </div>
+            <div class="team-grid">
+                <!-- Add team cards here -->
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Dive Into the Trenches?</h2>
+            <p>Join our squad of traders, strategists, and meme coin survivors. It's time to sharpen your skills and make your move.</p>
+            <a href="/signup" class="cta-button-large">Join Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Trench<span>Guide</span></div>
+                <p class="footer-text">TrenchGuide is not financial advice. DYOR and stay vigilant. © 2025 TrenchGuide.</p>
+            </div>
+            <div class="footer-bottom">Website design inspired by vintage military aesthetics and powered by community-driven knowledge.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        const elements = document.querySelectorAll('.animate, .animate-on-scroll');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        elements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
