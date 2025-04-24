@@ -533,6 +533,12 @@
             position: relative;
             z-index: 1;
         }
+.centered-card-wrapper {
+    grid-column: 1 / -1; /* spans the full row */
+    display: flex;
+    justify-content: center;
+}
+
         
 .flip-card {
     background-color: transparent;
@@ -1581,27 +1587,25 @@
                             <p>Key indicator: Rising floor price with increasing holder count signals growing community strength and reduced selling pressure.</p>
                         </div>
                     </div>
+<div class="centered-card-wrapper">
+    <div class="flip-card animate-on-scroll">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="flip-card-icon">
+                    <!-- SVG icon -->
                 </div>
-                <div class="flip-card animate-on-scroll">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="flip-card-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#D2703D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="64" height="64">
-                                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                </svg>
-                            </div>
-                            <h3>Exit Strategy</h3>
-                            <p>Knowing when to leave...</p>
-                        </div>
-                        <div class="flip-card-back">
-                            <h3>Exit Strategy</h3>
-                            <p>Take profits in stages - 25% at 2x, 25% at 3x, leaving the rest to ride. Set trailing stop losses to lock in gains during high volatility.</p>
-                            <p>Watch for declining social engagement and volume drops as early warning signs of momentum loss.</p>
-                        </div>
-                    </div>
-                </div>
+                <h3>Exit Strategy</h3>
+                <p>Knowing when to leave...</p>
             </div>
+            <div class="flip-card-back">
+                <h3>Exit Strategy</h3>
+                <p>Take profits in stages - 25% at 2x, 25% at 3x, leaving the rest to ride. Set trailing stop losses to lock in gains during high volatility.</p>
+                <p>Watch for declining social engagement and volume drops as early warning signs of momentum loss.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
         </div>
     </section>
 
