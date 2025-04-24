@@ -508,84 +508,6 @@
             left: 0;
             top: 0;
         }
-        
-        /* Tactical Data Section */
-        .tactical-data-section {
-            background-color: #1A1E14;
-            position: relative;
-        }
-        
-        .tactical-data-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234A5D23' fill-opacity='0.07' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-            z-index: 0;
-        }
-        
-        .tactical-data {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .data-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 30px 20px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .data-card.animate {
-            animation: fadeInUp 0.8s forwards;
-        }
-        
-        .data-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-            border-color: var(--primary-light);
-        }
-        
-        .data-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-        
-        .data-icon {
-            margin-bottom: 15px;
-        }
-        
-        .data-value {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin: 10px 0;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        
-        .data-label {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
 
         /* Interactive Strategies */
         .interactive-section {
@@ -823,9 +745,6 @@
         .quiz-option.correct {
             background-color: rgba(95, 122, 58, 0.3);
             border-color: var(--primary-light);
-        .quiz-option.correct {
-            background-color: rgba(95, 122, 58, 0.3);
-            border-color: var(--primary-light);
         }
         
         .quiz-option.wrong {
@@ -1042,9 +961,13 @@
         
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
             margin-bottom: 50px;
+        }
+        
+        .footer-col:first-child {
+            grid-column: span 2;
         }
         
         .footer-brand {
@@ -1389,6 +1312,10 @@
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .footer-col:first-child {
+                grid-column: span 1;
+            }
         }
         
         @media (max-width: 768px) {
@@ -1479,6 +1406,22 @@
             </div>
         </div>
     </header>
+
+    <!-- Theme Switch -->
+    <div class="theme-switch tooltip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <span class="tooltiptext">TOGGLE THEME</span>
+    </div>
 
     <!-- Progress bar -->
     <div class="progress-container">
@@ -1576,60 +1519,6 @@
                             <li>Leveraging cross-chain opportunities</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tactical Data Section -->
-    <section class="tactical-data-section" id="tacticalData">
-        <div class="container">
-            <div class="section-divider"></div>
-            <div class="section-header">
-                <h2 class="section-title">Meme Coin Battle Stats</h2>
-                <p class="section-subtitle">Key metrics from the frontlines of meme coin trading in 2025.</p>
-            </div>
-            <div class="tactical-data">
-                <div class="data-card animate-on-scroll">
-                    <div class="data-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#D2703D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                        </svg>
-                    </div>
-                    <div class="data-value" id="marketVol">2.7B</div>
-                    <div class="data-label">Average Daily Volume</div>
-                </div>
-                <div class="data-card animate-on-scroll">
-                    <div class="data-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#D2703D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="8" x2="12" y2="12"></line>
-                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                        </svg>
-                    </div>
-                    <div class="data-value" id="avgLifespan">19</div>
-                    <div class="data-label">Days Average Lifespan</div>
-                </div>
-                <div class="data-card animate-on-scroll">
-                    <div class="data-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#D2703D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <div class="data-value" id="hodlers">21K</div>
-                    <div class="data-label">Average Holders at Peak</div>
-                </div>
-                <div class="data-card animate-on-scroll">
-                    <div class="data-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#D2703D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40">
-                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-                        </svg>
-                    </div>
-                    <div class="data-value" id="returnRate">8.7x</div>
-                    <div class="data-label">Average Return for Early Investors</div>
                 </div>
             </div>
         </div>
@@ -1822,29 +1711,6 @@
         </div>
     </section>
 
-    <!-- Chat Assistant -->
-    <div class="chat-assistant" id="chatButton">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-        </svg>
-    </div>
-
-    <div class="chat-popup" id="chatPopup">
-        <div class="chat-header">
-            <h3>Tactical Support</h3>
-            <button class="chat-close" id="chatClose">&times;</button>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message incoming">
-                Welcome to the trenches, soldier! How can I assist with your meme coin mission today?
-            </div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Type your question...">
-            <button id="sendMessage">Send</button>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1916,6 +1782,29 @@
         <span class="tooltiptext">GET HELP</span>
     </div>
 
+    <!-- Chat Assistant -->
+    <div class="chat-assistant" id="chatButton">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </div>
+
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-header">
+            <h3>Tactical Support</h3>
+            <button class="chat-close" id="chatClose">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message incoming">
+                Welcome to the trenches, soldier! How can I assist with your meme coin mission today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="Type your question...">
+            <button id="sendMessage">Send</button>
+        </div>
+    </div>
+
     <script>
         // Show loading bar on page load
         document.addEventListener('DOMContentLoaded', function() {
@@ -1979,74 +1868,8 @@
                 step.style.transitionDelay = `${0.15 * index}s`;
             });
             
-            // Add delays to the animation of data cards
-            const dataCards = document.querySelectorAll('.data-card');
-            dataCards.forEach((card, index) => {
-                card.style.animationDelay = `${0.15 * index}s`;
-                card.style.transitionDelay = `${0.15 * index}s`;
-            });
-            
             // Force initial animations to start
             document.querySelector('.cta-section').classList.add('animate');
-            
-            // Animated counting for stats
-            function animateValue(id, start, end, duration) {
-                const obj = document.getElementById(id);
-                const range = end - start;
-                const minTimer = 50;
-                let stepTime = Math.abs(Math.floor(duration / range));
-                
-                stepTime = Math.max(stepTime, minTimer);
-                let startTime = new Date().getTime();
-                let endTime = startTime + duration;
-                let timer;
-                
-                function run() {
-                    let now = new Date().getTime();
-                    let remaining = Math.max((endTime - now) / duration, 0);
-                    let value = Math.round(end - (remaining * range));
-                    
-                    if (id === 'marketVol') {
-                        obj.textContent = value.toFixed(1) + 'B';
-                    } else if (id === 'returnRate') {
-                        obj.textContent = value.toFixed(1) + 'x';
-                    } else if (id === 'hodlers') {
-                        obj.textContent = value + 'K';
-                    } else {
-                        obj.textContent = value;
-                    }
-                    
-                    if (value === end) {
-                        clearInterval(timer);
-                    }
-                }
-                
-                timer = setInterval(run, stepTime);
-                run();
-            }
-            
-            // Trigger animations when elements come into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.id === 'marketVol') {
-                            animateValue('marketVol', 0, 2.7, 2000);
-                        } else if (entry.target.id === 'avgLifespan') {
-                            animateValue('avgLifespan', 0, 19, 2000);
-                        } else if (entry.target.id === 'hodlers') {
-                            animateValue('hodlers', 0, 21, 2000);
-                        } else if (entry.target.id === 'returnRate') {
-                            animateValue('returnRate', 0, 8.7, 2000);
-                        }
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            // Observe the stat counter elements
-            document.querySelectorAll('.data-value').forEach(counter => {
-                observer.observe(counter);
-            });
         });
         
         // Quiz functionality
